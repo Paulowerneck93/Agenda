@@ -19,8 +19,6 @@ int main(void)
 
 {
     Pessoa contato [10];
-
-    int cont = 1;
     
 
         for (int i = 0; i < 10; i++) //Cadastrar
@@ -43,10 +41,6 @@ int main(void)
             printf("Observacoes: ");
             scanf("%s", &contato[i].observacoes);
 
-            printf("Deseja fazer mais um cadastro?");
-            printf("\n1 - Sim");
-            printf("\n2 - Nao");
-            scanf("%d", &i);
 
         }
 
