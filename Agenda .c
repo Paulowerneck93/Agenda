@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define TAM_VET_PESSOA 10
-
-typedef struct Pessoa //Estrutura de dados coletados
+struct pessoa //Estrutura para dados coletados
 {
     int codigo;
     char nome[50];
@@ -11,47 +9,146 @@ typedef struct Pessoa //Estrutura de dados coletados
     char email[50];
     char nascimento[10];
     char observacoes[100];
-}   Pessoa;
+};
 
-
-int main(void)
-
-
-{
-    Pessoa contato [10];
     
+    struct pessoa contato[10];
+    int cont = 1;
 
-        for (int i = 0; i < 10; i++) //Cadastrar
+    void cadastro() //Cadastrar contatos
+{
+    int opCadastro;
+
+
+        for (cont = 0; cont < 10; cont++)
         {
+            if (cont < 10)
+            {
+
             printf("\nCodigo: ");
-            scanf("%d", &contato[i].codigo);
+            scanf("%d", &contato[cont].codigo);
 
-            printf("Nome completo: ");
-            scanf("%s", &contato[i].nome); 
+            while (contato[cont].codigo < 1);
+            {
+            
+            printf("\nNome completo: ");
+            scanf("%s", contato[cont].nome); 
 
-            printf("Telefone: ");
-            scanf("%s", &contato[i].telefone);
+            printf("\nTelefone: ");
+            scanf("%s", contato[cont].telefone);
 
-            printf("E-mail: ");
-            scanf("%s", &contato[i].email);
+            printf("\nE-mail: ");
+            scanf("%s", contato[cont].email);
 
-            printf("Nascimento: ");
-            scanf("%s", &contato[i].nascimento);
+            printf("\nNascimento: ");
+            scanf("%s", contato[cont].nascimento);
 
-            printf("Observacoes: ");
-            scanf("%s", &contato[i].observacoes);
-
+            printf("\nObservacoes: ");
+            scanf("%s", contato[cont].observacoes);
+            }
 
         }
-
-    
-    for (int i = 0; i < 10; i++) //Listar
+        else
+            printf("\nAgenda cheia");
+            printf("\nDeseja fazer outro cadastro?");
+            printf("\n1 - Sim");
+            printf("\n2 - Nao\n");
+            scanf("\n%d", &opCadastro);
+                if(opCadastro == 2)
+                {
+                    break;
+                }
+            }
+        }        
+    void listar() //Listar todos os cadastros
     {
-        printf("%d\n", contato[i].codigo);
-        printf("%s\n", contato[i].nome);
-        printf("%s\n", contato[i].telefone);
-        printf("%s\n", contato[i].email);
-        printf("%s\n", contato[i].nascimento);
-        printf("%s\n", contato[i].observacoes);
+    for (cont = 0; cont < 10 && contato[cont].codigo > 0; cont++)
+    {
+        printf("%d\n", contato[cont].codigo);
+        printf("%s\n", contato[cont].nome);
+        printf("%s\n", contato[cont].telefone);
+        printf("%s\n", contato[cont].email);
+        printf("%s\n", contato[cont].nascimento);
+        printf("%s\n", contato[cont].observacoes);
     }
+    
+}
+
+    void buscar() //Buscar um cadastro específico
+        
+    {
+        int buscar;
+
+        printf("\nDigite o codigo que deseja buscar: ");
+        scanf("%d", &buscar);
+        for(cont = 0; cont < 10; cont++)
+        {
+            if(buscar == contato[cont].codigo)
+
+            {
+            printf("\nCodigo: ");
+            printf("%d\n", contato[cont].codigo);
+
+            printf("Nome ");
+            printf("%s\n", contato[cont].nome);
+
+            printf("Telefone: ");
+            printf("%s\n", contato[cont].telefone);
+
+            printf("email: ");
+            printf("%s\n", contato[cont].email);
+
+            printf("Nascimento: ");
+            printf("%s\n", contato[cont].nascimento);
+
+            printf("Observacoes: ");
+            printf("%s\n", contato[cont].observacoes);
+            }
+            else break;
+
+            
+        }
+        
+    
     }
+        
+    void menu() //Menu para o usuário
+    {
+        int opMenu;
+        do
+        {
+        printf(" 1 - Cadastrar\n");
+        printf(" 2 - Listar\n");
+        printf(" 3 - Buscar\n");
+        printf(" 4 - Alterar\n");
+        printf(" 5 - Excluir\n");
+        printf(" 0 - Sair\n");
+        scanf("%d", &opMenu);
+
+       switch (opMenu)
+        {
+            case 1:
+                cadastro();
+                break;
+
+            case 2:
+                listar();
+                break;
+
+            case 3:
+                buscar();
+                break;                
+
+
+            default:
+            printf("Opcao Invalida");
+            break;
+        }
+    } while (opMenu != 0);
+}
+
+
+int main () {
+   
+    menu();
+}
