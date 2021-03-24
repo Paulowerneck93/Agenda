@@ -1,2 +1,2 @@
 # Agenda
- Adicionada funcionalidade Listar
+ Adicionada funcionalidade "Buscar"
