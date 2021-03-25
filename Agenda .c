@@ -103,12 +103,13 @@ struct pessoa //Estrutura para dados coletados
 
             printf("Observacoes: ");
             printf("%s\n", contato[cont].observacoes);
-            }
-            else break;
-
-            
+            break;
+            }            
         }
-        
+            if (cont == 10);
+            {
+                ("Contato nao encontrado");
+            }
     
     }
         
@@ -141,7 +142,7 @@ struct pessoa //Estrutura para dados coletados
 
 
             default:
-            printf("Opcao Invalida");
+            printf("Encerrando...");
             break;
         }
     } while (opMenu != 0);
