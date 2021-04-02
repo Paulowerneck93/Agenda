@@ -108,9 +108,43 @@ struct pessoa //Estrutura para dados coletados
         }
             if (cont == 10);
             {
-                ("Contato nao encontrado");
+                ("Contato nao encontrado\n");
             }
     
+    }
+
+    void alterar()
+    {
+        int alterar;
+
+        printf("Digite o numero do codigo que deseja alterar: ");
+        scanf("%d", &alterar);
+
+        for(cont = 0; cont < 10; cont++)
+        {
+            if(alterar == contato[cont].codigo)
+            {
+                printf("\nNome completo: ");
+                scanf("%s", contato[cont].nome); 
+
+                printf("\nTelefone: ");
+                scanf("%s", contato[cont].telefone);
+
+                printf("\nE-mail: ");
+                scanf("%s", contato[cont].email);
+
+                printf("\nNascimento: ");
+                scanf("%s", contato[cont].nascimento);
+
+                printf("\nObservacoes: ");
+                scanf("%s", contato[cont].observacoes);
+            }
+
+        }
+            if (cont == 10);
+            {
+                ("Contato nao encontrado\n");
+            }
     }
         
     void menu() //Menu para o usuário
@@ -138,7 +172,11 @@ struct pessoa //Estrutura para dados coletados
 
             case 3:
                 buscar();
-                break;                
+                break;      
+
+            case 4:
+                alterar();
+                break;          
 
 
             default:
